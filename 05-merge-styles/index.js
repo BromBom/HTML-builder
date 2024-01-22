@@ -15,8 +15,8 @@ async function createBundle(srcAddress, destAddress) {
       const arrBundle = [];
       const fd = await promises.open(fileAddress);
       const stream = fd.createReadStream({ encoding: 'utf8' });
-      stream.on('data', chunk => arrBundle.push(chunk));
-      stream.on('close', () => arrBundle.forEach(chunk => bundleStream.write(chunk)));
+      stream.on('data', (chunk) => arrBundle.push(chunk));
+      stream.on('close', () => arrBundle.forEach((chunk) => bundleStream.write(chunk)));
     }
   }
 }
