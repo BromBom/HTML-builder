@@ -44,11 +44,11 @@ async function createBundleStyles(srcAddress, distAddress) {
 }
 
 async function deleteFiles(address) {
-  const content = await readdir(address, { withFileTypes: true });
+  const content = await promises.readdir(address, { withFileTypes: true });
   
   for (const item of content) {
     if (item.isFile()) {
-      await unlink(path.join(address, item.name));
+      await promises.unlink(path.join(address, item.name));
     } else if (item.isDirectory()) {
       deleteFiles(path.join(address, item.name));
     }
